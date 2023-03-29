@@ -1,14 +1,10 @@
-{ pkgs ? import <nixpkgs> {}}:
+{ pkgs ? import (fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz) {}}:
 
-let
-  unstable = import (fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz) {};
-
-in pkgs.mkShell {
+pkgs.mkShell {
   buildInputs = with pkgs; [
     pkg-config
     openssl
-
-    unstable.nodePackages.tailwindcss
+    nodePackages.tailwindcss
   ];
 
   # RUST_BACKTRACE = 1;
