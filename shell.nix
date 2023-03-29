@@ -1,9 +1,10 @@
 { pkgs ? import <nixpkgs> {}}:
 
-pkgs.mkShell {
+in pkgs.mkShell {
   buildInputs = with pkgs; [
     pkg-config
     openssl
+    nodePackages.tailwindcss
   ];
 
   # RUST_BACKTRACE = 1;
